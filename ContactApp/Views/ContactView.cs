@@ -39,6 +39,15 @@ namespace ContactApp.Views
             ContactViewModel.AddContact(newContact);
         }
 
+        private void updateContact() {
+            display();
+            Console.Write("Please select contact ID: ");
+            int id = Convert.ToInt32(Console.ReadLine());
+            var newContact = entryContact();
+            newContact.Id = id;
+            ContactViewModel.UpdateContact(newContact);
+        }
+
         public void run()
         {
             int choice;
@@ -49,6 +58,7 @@ namespace ContactApp.Views
                 Console.WriteLine("|               MAIN MENU               |");
                 Console.WriteLine("+===+===================================+");
                 Console.WriteLine("| 1 | Add New Contact                   |");
+                Console.WriteLine("| 2 | Update Contact                    |");
                 Console.WriteLine("| 0 | Exit                              |");
                 Console.WriteLine("+===+===================================+");
                 Console.Write("Please insert your choice (1...4) : ");
@@ -57,6 +67,9 @@ namespace ContactApp.Views
                 {
                     case 1:
                         createContact();
+                        break;
+                    case 2:
+                        updateContact();
                         break;
                     case 0:
                         Console.Clear();
